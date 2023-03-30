@@ -1,0 +1,86 @@
+print("Witaj w Hogwarcie pierwszoroczny uczniu! Jestem Tiarą Przydziału!")
+
+input("Przywitaj się z Tiarą: ")
+
+print ("Odpowiedz na 5 pytań, a ja dopasuję Cię do jednego z czterech domów Hogwartu, którymi są: Gryffindor, "
+       "Slytherin, Ravenclaw lub Hufflepuff.")
+
+input("Czy jesteś gotowy?: ")
+
+print("Dobrze,więc zaczynajmy.")
+
+# Pytania i odpowiedzi dla danego domu w Hogwarcie
+
+pytania = [
+    "1. Jaka cecha jest dla Ciebie najważniejsza?",
+    "2. Jakie są Twoje mocne strony?",
+    "3. Jakie są Twoje słabe strony?",
+    "4. Czego boisz się najbardziej?",
+    "5. Czego pragniesz najbardziej?"
+]
+
+odpowiedzi = {
+    "Gryffindor": [
+        ["odwaga", "siła", "męstwo"],
+        ["dzielność", "liderowanie", "optymizm"],
+        ["beztroskość", "lenistwo", "impulsywność"],
+        ["pająków", "ciemności", "porażki"],
+        ["sławy", "uznania", "osiągnięć"]
+    ],
+    "Slytherin": [
+        ["ambicja", "determinacja", "stanowczość"],
+        ["rozwój", "inteligencja", "stosowanie manipulacji"],
+        ["brak lojalności", "arogancja", "manipulacja"],
+        ["wstydu", "ujawnienia tajemnic", "odrzucenia"],
+        ["władzy", "bogactwa", "sławy"]
+    ],
+    "Ravenclaw": [
+        ["mądrość", "inteligencja", "kreatywność"],
+        ["zdecydowanie", "krytycyzm", "poczucie humoru"],
+        ["samotność", "bezradność", "perfekcjonizm"],
+        ["ignorancji", "ataku", "nudy"],
+        ["wiedzy", "przygód", "odkrywania nowych rzeczy"]
+    ],
+    "Hufflepuff": [
+        ["lLojalność", "uczciwość", "cierpliwość"],
+        ["empatia", "towarzyskość", "opanowanie"],
+        ["brak asertywności", "nieśmiałość", "naiwność"],
+        ["samotności", "odrzucenia", "konfliktów"],
+        ["przyjaźni", "harmonii", "współpracy"]
+    ]
+}
+
+# Przypisanie domu
+
+def przypisz_dom(cechy):
+    max_cecha = max(cechy, key=cechy.get)
+    if max_cecha == "Gryffindor":
+        return "Gryffindor"
+    elif max_cecha == "Slytherin":
+        return "Slytherin"
+    elif max_cecha == "Ravenclaw":
+        return "Ravenclaw"
+    elif max_cecha == "Hufflepuff":
+        return "Hufflepuff"
+
+def pytaj_uzytkownika():
+    odpowiedzi_uzytkownika = {}
+    for pytanie in pytania:
+        odpowiedz = input(pytanie + " ")
+        odpowiedzi_uzytkownika[pytanie] = odpowiedz
+    return odpowiedzi_uzytkownika
+
+def dopasuj_uzytkownika():
+    cechy_uzytkownika = {"Gryffindor": 0, "Slytherin": 0, "Ravenclaw": 0, "Hufflepuff": 0}
+    odpowiedzi_uzytkownika = pytaj_uzytkownika()
+    for dom, lista_cech in odpowiedzi.items():
+        for i in range(len(pytania)):
+            cecha = odpowiedzi_uzytkownika[pytania[i]]
+            if cecha in lista_cech[i]:
+                cechy_uzytkownika[dom] += 1
+    return przypisz_dom(cechy_uzytkownika)
+
+dom_uzytkownika = dopasuj_uzytkownika()
+print("A więc...Twój dom w Hogwarcie to: " + dom_uzytkownika)
+
+print("Hurra! Gratulacje!")
