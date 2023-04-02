@@ -9,8 +9,6 @@ input("Czy jesteś gotowy?: ")
 
 print("Dobrze,więc zaczynajmy.")
 
-# Pytania i odpowiedzi dla danego domu w Hogwarcie
-
 pytania = [
     "1. Jaka cecha jest dla Ciebie najważniejsza?",
     "2. Jakie są Twoje mocne strony?",
@@ -49,8 +47,6 @@ odpowiedzi = {
         ["przyjaźni", "harmonii", "współpracy"]
     ]
 }
-
-# Przypisanie domu
 
 def przypisz_dom(cechy):
     max_cecha = max(cechy, key=cechy.get)
