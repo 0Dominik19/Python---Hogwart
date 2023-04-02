@@ -1,82 +1,82 @@
-print("Witaj w Hogwarcie pierwszoroczny uczniu! Jestem Tiarą Przydziału!")
+print("Welcome to Hogwarts, first year student! I am the Sorting Hat!")
 
-input("Przywitaj się z Tiarą: ")
+input("Say hello to Sorting Hat: ")
 
-print ("Odpowiedz na 5 pytań, a ja dopasuję Cię do jednego z czterech domów Hogwartu, którymi są: Gryffindor, "
-       "Slytherin, Ravenclaw lub Hufflepuff.")
+print ("Answer 5 questions and I will match you with one of the four Hogwarts houses, which are: Gryffindor, "
+       "Slytherin, Ravenclaw or Hufflepuff.")
 
-input("Czy jesteś gotowy?: ")
+input("Are you ready?: ")
 
-print("Dobrze,więc zaczynajmy.")
+print("Okay, so let's get started.")
 
-pytania = [
-    "1. Jaka cecha jest dla Ciebie najważniejsza?",
-    "2. Jakie są Twoje mocne strony?",
-    "3. Jakie są Twoje słabe strony?",
-    "4. Czego boisz się najbardziej?",
-    "5. Czego pragniesz najbardziej?"
+questions = [
+    "1. What feature is most important to you?",
+    "2. What are your strengths?",
+    "3. What are your weaknesses?",
+    "4. What are you most afraid of?",
+    "5. What do you want most?"
 ]
 
-odpowiedzi = {
+answers = {
     "Gryffindor": [
-        ["odwaga", "siła", "męstwo"],
-        ["dzielność", "liderowanie", "optymizm"],
-        ["beztroskość", "lenistwo", "impulsywność"],
-        ["pająków", "ciemności", "porażki"],
-        ["sławy", "uznania", "osiągnięć"]
+        ["courage", "strength", "bravery"],
+        ["patience", "leadership", "optimism"],
+        ["carelessness", "laziness", "impulsiveness"],
+        ["spiders", "darkness", "failures"],
+        ["fame", "recognition", "achievements"]
     ],
     "Slytherin": [
-        ["ambicja", "determinacja", "stanowczość"],
-        ["rozwój", "inteligencja", "stosowanie manipulacji"],
-        ["brak lojalności", "arogancja", "manipulacja"],
-        ["wstydu", "ujawnienia tajemnic", "odrzucenia"],
-        ["władzy", "bogactwa", "sławy"]
+        ["ambition", "determination", "firmness"],
+        ["development", "intelligence", "manipulation"],
+        ["disloyalty", "arrogance", "cunning"],
+        ["shame", "disclosure", "rejection"],
+        ["power", "wealth", "fame"]
     ],
     "Ravenclaw": [
-        ["mądrość", "inteligencja", "kreatywność"],
-        ["zdecydowanie", "krytycyzm", "poczucie humoru"],
-        ["samotność", "bezradność", "perfekcjonizm"],
-        ["ignorancji", "ataku", "nudy"],
-        ["wiedzy", "przygód", "odkrywania nowych rzeczy"]
+        ["wisdom", "intelligence", "creativity"],
+        ["definitely", "criticism", "sense of humor"],
+        ["loneliness", "helplessness", "perfectionism"],
+        ["ignorance", "attack", "boredom"],
+        ["knowledge", "adventures", "discovering new things"]
     ],
     "Hufflepuff": [
-        ["lLojalność", "uczciwość", "cierpliwość"],
-        ["empatia", "towarzyskość", "opanowanie"],
-        ["brak asertywności", "nieśmiałość", "naiwność"],
-        ["samotności", "odrzucenia", "konfliktów"],
-        ["przyjaźni", "harmonii", "współpracy"]
+        ["loyalty", "honesty", "patience"],
+        ["empathy", "sociability", "poise"],
+        ["lack of assertiveness", "shyness", "naivety"],
+        ["loneliness", "rejection", "conflicts"],
+        ["friendship", "harmony", "cooperation"]
     ]
 }
 
-def przypisz_dom(cechy):
-    max_cecha = max(cechy, key=cechy.get)
-    if max_cecha == "Gryffindor":
+def assign_house(features):
+    max_feature = max(features, key=features.get)
+    if max_feature == "Gryffindor":
         return "Gryffindor"
-    elif max_cecha == "Slytherin":
+    elif max_feature == "Slytherin":
         return "Slytherin"
-    elif max_cecha == "Ravenclaw":
+    elif max_feature == "Ravenclaw":
         return "Ravenclaw"
-    elif max_cecha == "Hufflepuff":
+    elif max_feature == "Hufflepuff":
         return "Hufflepuff"
 
-def pytaj_uzytkownika():
-    odpowiedzi_uzytkownika = {}
-    for pytanie in pytania:
-        odpowiedz = input(pytanie + " ")
-        odpowiedzi_uzytkownika[pytanie] = odpowiedz
-    return odpowiedzi_uzytkownika
+def ask_student():
+    student_responses = {}
+    for question in questions:
+        answer = input(question + " ")
+        student_responses[question] = answer
+    return student_responses
 
-def dopasuj_uzytkownika():
-    cechy_uzytkownika = {"Gryffindor": 0, "Slytherin": 0, "Ravenclaw": 0, "Hufflepuff": 0}
-    odpowiedzi_uzytkownika = pytaj_uzytkownika()
-    for dom, lista_cech in odpowiedzi.items():
-        for i in range(len(pytania)):
-            cecha = odpowiedzi_uzytkownika[pytania[i]]
-            if cecha in lista_cech[i]:
-                cechy_uzytkownika[dom] += 1
-    return przypisz_dom(cechy_uzytkownika)
+def match_student():
+    student_features = {"Gryffindor": 0, "Slytherin": 0, "Ravenclaw": 0, "Hufflepuff": 0}
+    student_response = ask_student()
+    for house, features_list in answers.items():
+        for i in range(len(questions)):
+            feature = student_response[questions[i]]
+            if feature in features_list[i]:
+                student_features[house] += 1
+    return assign_house(student_features)
 
-dom_uzytkownika = dopasuj_uzytkownika()
-print("A więc...Twój dom w Hogwarcie to: " + dom_uzytkownika)
+student_house = match_student()
+print("So... Your Hogwarts house is: " + student_house)
 
-print("Hurra! Gratulacje!")
+print("Hurrah! Congratulations!")
