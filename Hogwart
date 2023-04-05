@@ -1,13 +1,18 @@
 print("Welcome to Hogwarts, first year student! I am the Sorting Hat!")
+print("")
 
 input("Say hello to Sorting Hat: ")
+print("")
 
 print ("Answer 5 questions and I will match you with one of the four Hogwarts houses, which are: Gryffindor, "
        "Slytherin, Ravenclaw or Hufflepuff.")
+print("")
 
 input("Are you ready?: ")
+print("")
 
 print("Okay, so let's get started.")
+print("")
 
 questions = [
     "1. What feature is most important to you?",
@@ -77,6 +82,7 @@ def match_student():
     return assign_house(student_features)
 
 student_house = match_student()
-print("So... Your Hogwarts house is: " + student_house)
+print("")
+print("So... Your Hogwarts house is: " + student_house + "!")
 
 print("Hurrah! Congratulations!")
